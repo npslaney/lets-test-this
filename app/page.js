@@ -9,7 +9,8 @@ export default function Home() {
     lspNodeId: "03fd9a377576df94cc7e458471c43c400630655083dee89df66c6ad38d1b7acffd",
     vssUrl: "https://vss.staging.moneydevkit.com/vss",
     network: "signet",
-    rgsUrl: "https://rgs.mutinynet.com/snapshot"
+    rgsUrl: "https://rgs.mutinynet.com/snapshot",
+    baseUrl: "https://staging.moneydevkit.com/rpc",
   });
 
   const handlePurchase = (jokeType, amount, prompt) => {
