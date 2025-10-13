@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@moneydevkit/lightning-js": "^0.1.10",
     "mdk-checkout": "^0.0.51",
     "next": "15.5.3",
     "react": "19.1.0",
