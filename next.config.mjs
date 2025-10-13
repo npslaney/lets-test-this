@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  serverExternalPackages: ['@moneydevkit/lightning-js'],
+import withMdkCheckout from 'mdk-checkout/next-plugin'
+
+const nextConfig = withMdkCheckout({
   webpack: (config, { isServer }) => {
     if (isServer) {
       // Externalize lightning-js and its platform-specific packages
@@ -17,6 +18,6 @@ const nextConfig = {
     }
     return config;
   }
-};
+})
 
 export default nextConfig;

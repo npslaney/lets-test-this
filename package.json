@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@moneydevkit/lightning-js": "^0.1.10",
-    "mdk-checkout": "^0.0.52",
+    "mdk-checkout": "^0.0.54",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
