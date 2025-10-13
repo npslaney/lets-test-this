@@ -1,8 +1,21 @@
+'use client'
 
-import Link from 'next/link';
+import { useCheckout } from 'mdk-checkout'
 
 export default function Home() {
-  
+  const { navigate, isNavigating } = useCheckout()
+
+  const handlePurchase = (jokeType, amount, prompt) => {
+    navigate({
+      prompt: prompt,
+      amount: amount,
+      currency: 'USD',
+      metadata: {
+        type: jokeType,
+        successUrl: `/checkout/success?type=${jokeType}`
+      }
+    })
+  }
 
   return (
     <div className="h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 text-white font-sans overflow-hidden">
@@ -28,13 +41,13 @@ export default function Home() {
                   Entry-level humor. Perfect for casual chuckles.
                 </p>
               </div>
-              <Link href="/joke/basic">
-                <button
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg text-center"
-                >
-                  Buy Joke
-                </button>
-              </Link>
+              <button
+                onClick={() => handlePurchase('basic', 299, 'A Joke - Entry-level humor')}
+                disabled={isNavigating}
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg text-center disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isNavigating ? 'Creating checkout...' : 'Buy Joke'}
+              </button>
             </div>
           </div>
 
@@ -50,13 +63,13 @@ export default function Home() {
                   Mid-tier comedy gold. Guaranteed genuine laughter.
                 </p>
               </div>
-              <Link href="/joke/premium">
-                <button
-                  className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg text-center"
-                >
-                  Buy Joke
-                </button>
-              </Link>
+              <button
+                onClick={() => handlePurchase('premium', 599, 'Funnier Joke - Mid-tier comedy gold')}
+                disabled={isNavigating}
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg text-center disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isNavigating ? 'Creating checkout...' : 'Buy Joke'}
+              </button>
             </div>
           </div>
 
@@ -69,13 +82,13 @@ export default function Home() {
                   Elite comedy experience. Uncontrollable laughter guaranteed.
                 </p>
               </div>
-              <Link href="/joke/elite">
-                <button
-                  className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg text-center"
-                >
-                  Buy Joke
-                </button>
-              </Link>
+              <button
+                onClick={() => handlePurchase('elite', 999, 'Funniest Joke - Elite comedy experience')}
+                disabled={isNavigating}
+                className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg text-center disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isNavigating ? 'Creating checkout...' : 'Buy Joke'}
+              </button>
             </div>
           </div>
         </div>
