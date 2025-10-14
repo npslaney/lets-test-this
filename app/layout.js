@@ -16,6 +16,9 @@ export const metadata = {
   description: "Premium jokes for the discerning humor connoisseur",
 };
 
+// lets-test-this/app/layout.js
+export const runtime = 'nodejs';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
